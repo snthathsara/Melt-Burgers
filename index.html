@@ -26,8 +26,8 @@
 </head>
 <body>
 
-  <!-- Floating Capsule Pill Navbar with Elastic Fluid Blob -->
-  <header class="site-header">
+  <!-- Desktop Floating Capsule Pill Navbar (Screens > 900px) -->
+  <header class="site-header desktop-header">
     <nav class="nav-capsule-wrapper" aria-label="Main Navigation">
       <a href="#hero" class="nav-brand" aria-label="MELT Burgers Home">
         <img src="/melt-logo.jpg" alt="MELT Logo" class="nav-brand-img" />
@@ -52,7 +52,7 @@
       <div class="nav-controls">
         <!-- Theme Switcher Pill -->
         <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Theme" aria-label="Toggle Theme">
-          <span id="theme-icon">
+          <span class="theme-icon-container" id="theme-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="4"></circle>
               <path d="M12 2v2"></path>
@@ -69,9 +69,41 @@
 
         <!-- Quick Reserve / Order CTA -->
         <a href="#reservations" class="nav-cta-btn">Order / Dine-In</a>
+      </div>
+    </nav>
+  </header>
 
-        <!-- Mobile Menu Toggle Button -->
-        <button class="mobile-toggle" id="mobile-toggle-btn" aria-label="Open mobile menu" aria-expanded="false">
+  <!-- Dedicated Mobile Navbar (Screens <= 900px with Smart Hide on Scroll Down) -->
+  <header class="mobile-site-header" id="mobile-site-header">
+    <div class="mobile-nav-bar">
+      <a href="#hero" class="mobile-brand" aria-label="MELT Burgers Home">
+        <img src="/melt-logo.jpg" alt="MELT Logo" class="mobile-brand-img" />
+        <span class="mobile-brand-text">MELT</span>
+      </a>
+
+      <div class="mobile-header-actions">
+        <!-- Mobile Theme Toggle -->
+        <button class="theme-toggle-btn mobile-theme-btn" title="Toggle Theme" aria-label="Toggle Theme">
+          <span class="theme-icon-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="4"></circle>
+              <path d="M12 2v2"></path>
+              <path d="M12 20v2"></path>
+              <path d="m4.93 4.93 1.41 1.41"></path>
+              <path d="m17.66 17.66 1.41 1.41"></path>
+              <path d="M2 12h2"></path>
+              <path d="M20 12h2"></path>
+              <path d="m6.34 17.66-1.41 1.41"></path>
+              <path d="m19.07 4.93-1.41 1.41"></path>
+            </svg>
+          </span>
+        </button>
+
+        <!-- Quick Mobile Order CTA -->
+        <a href="#reservations" class="mobile-order-pill">Order</a>
+
+        <!-- Mobile Drawer Hamburger Toggle -->
+        <button class="mobile-toggle-btn" id="mobile-toggle-btn" aria-label="Open mobile menu" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
             <line x1="4" x2="20" y1="12" y2="12"></line>
             <line x1="4" x2="20" y1="6" y2="6"></line>
@@ -79,7 +111,7 @@
           </svg>
         </button>
       </div>
-    </nav>
+    </div>
 
     <!-- Mobile Slide-in Drawer -->
     <div class="mobile-menu-drawer" id="mobile-menu-drawer">
@@ -107,7 +139,7 @@
           <div class="badge-pill hero-status-badge" id="hero-status-badge">
             <span class="status-pulse-dot" id="status-pulse-dot"></span>
             <span class="hero-status-text">
-              <span id="cafe-status-label">Open Today</span> · <span id="cafe-status-sub">Closes at 11:00 PM · Dine In & Takeaway</span>
+              <span id="cafe-status-label">Open Today</span> · <span id="cafe-status-sub">Closes 11:00 PM · Dine In / Takeaway</span>
             </span>
           </div>
         </div>
@@ -650,19 +682,19 @@
           </div>
 
           <!-- Right: Atmospheric Photos -->
-          <div style="display: flex; flex-direction: column; gap: 20px;">
-            <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 16px 36px rgba(0,0,0,0.12); border: 2px solid var(--border-color);">
+          <div class="about-atmospheric-photos">
+            <div class="about-photo-wrap">
               <img 
                 src="/melt-burger.jpg" 
                 alt="Signature Melt Double Beef Burger" 
-                style="width: 100%; height: 280px; object-fit: cover; display: block;"
+                class="about-photo-img"
               />
             </div>
-            <div style="border-radius: 18px; overflow: hidden; box-shadow: 0 16px 36px rgba(0,0,0,0.12); border: 2px solid var(--border-color);">
+            <div class="about-photo-wrap">
               <img 
                 src="/melt-loaded-fries.jpg" 
                 alt="Slutty Loaded Crispy Chicken Cheesy Fries" 
-                style="width: 100%; height: 220px; object-fit: cover; display: block;"
+                class="about-photo-img"
               />
             </div>
           </div>

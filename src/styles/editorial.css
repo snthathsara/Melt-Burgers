@@ -1200,6 +1200,35 @@ section[id],
   color: #E4CEF8;
 }
 
+/* About Atmospheric Photos (Desktop Base) */
+.about-atmospheric-photos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-photo-wrap {
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+  border: 2px solid var(--border-color);
+}
+
+.about-photo-wrap:first-child {
+  height: 280px;
+}
+
+.about-photo-wrap:last-child {
+  height: 220px;
+}
+
+.about-photo-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 /* ==========================================================================
    Comprehensive Responsive System (Mobile, Tablet, Desktop)
    ========================================================================== */
@@ -1223,16 +1252,84 @@ section[id],
 
 @media (max-width: 768px) {
   .hero-editorial-section {
-    padding-top: 105px;
-    padding-bottom: 50px;
+    padding-top: 90px;
+    padding-bottom: 45px;
   }
 
+  /* 1. Main Title: big enough to be prominent and readable on mobile */
   .hero-stacked-title {
-    font-size: clamp(26px, 7.2vw, 50px);
+    font-size: clamp(38px, 10vw, 54px) !important;
+    line-height: 0.92 !important;
   }
 
+  /* 2. Burger: large, visible, and mouthwatering over the headline */
   .hero-floating-cutout {
-    width: clamp(115px, 22vw, 165px);
+    width: clamp(170px, 44vw, 230px) !important;
+  }
+
+  /* 3. All 4 circular buttons visible in one go (grid, no overflow-x) */
+  .story-highlights-bar {
+    padding: 24px 0 20px 0;
+  }
+
+  .story-highlights-container {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 6px !important;
+    padding: 0 4px !important;
+    width: 100% !important;
+    max-width: 440px !important;
+    margin: 0 auto !important;
+    overflow-x: visible !important;
+    justify-items: center !important;
+  }
+
+  .story-highlight-item {
+    width: 100% !important;
+    padding: 0 !important;
+    gap: 6px !important;
+  }
+
+  .story-circle-outer {
+    width: clamp(48px, 14vw, 62px) !important;
+    height: clamp(48px, 14vw, 62px) !important;
+    padding: 2px !important;
+  }
+
+  .story-circle-inner svg {
+    width: clamp(20px, 5.5vw, 24px) !important;
+    height: clamp(20px, 5.5vw, 24px) !important;
+  }
+
+  .story-highlight-label {
+    font-size: clamp(9.5px, 2.7vw, 11px) !important;
+    text-align: center !important;
+    line-height: 1.15 !important;
+    white-space: normal !important;
+    max-width: 74px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    gap: 1px !important;
+  }
+
+  /* 4. Review photos: compact 2-column duo instead of massive stacked height */
+  .about-atmospheric-photos {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+    margin-top: 18px !important;
+  }
+
+  .about-photo-wrap,
+  .about-photo-wrap:first-child,
+  .about-photo-wrap:last-child {
+    height: 135px !important;
+    border-radius: 14px !important;
+  }
+
+  .about-photo-img {
+    height: 135px !important;
   }
 
   .editorial-row,
@@ -1303,26 +1400,35 @@ section[id],
 }
 
 @media (max-width: 500px) {
+  /* 5. Open status pill: stays on ONE clean line without breaking */
   .hero-status-pill-wrap {
-    margin-bottom: 32px;
+    margin-bottom: 22px !important;
+    padding: 0 8px !important;
   }
 
   .hero-status-badge {
-    padding: 6px 14px;
-    gap: 7px;
+    padding: 6px 14px !important;
+    gap: 7px !important;
+    max-width: calc(100vw - 20px) !important;
+    white-space: nowrap !important;
   }
 
   .hero-status-text {
-    font-size: 12px;
+    font-size: clamp(10px, 2.75vw, 11.5px) !important;
+    white-space: nowrap !important;
+    line-height: 1.2 !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
   }
 
   .hero-stacked-title {
-    font-size: clamp(20px, 6.8vw, 32px);
-    line-height: 0.95;
+    font-size: clamp(34px, 10.2vw, 46px) !important;
+    line-height: 0.92 !important;
+    margin-bottom: 18px !important;
   }
 
   .hero-floating-cutout {
-    width: clamp(95px, 24vw, 130px);
+    width: clamp(160px, 48vw, 205px) !important;
   }
 
   .order-pedestal-cake {

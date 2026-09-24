@@ -1,4 +1,5 @@
 // Floating Capsule Pill Navbar with Elastic Fluid Blob Indicator & ScrollSpy
+// Includes Mobile-only Smart Hide-on-Scroll-Down Navigation
 
 export function initNavbar() {
   const track = document.getElementById('nav-links-track');
@@ -6,6 +7,7 @@ export function initNavbar() {
   const links = Array.from(document.querySelectorAll('.nav-link'));
   const sections = Array.from(document.querySelectorAll('section[id], div[id]'));
   const ctaBtn = document.querySelector('.nav-cta-btn');
+  const mobileHeader = document.getElementById('mobile-site-header');
   
   if (!track || !blob || links.length === 0) return;
 
@@ -48,7 +50,7 @@ export function initNavbar() {
     }
   }
 
-  // Hover transitions
+  // Hover transitions on desktop nav track
   links.forEach(link => {
     link.addEventListener('mouseenter', () => {
       isHovering = true;
@@ -108,9 +110,34 @@ export function initNavbar() {
     'reservations': '#about'
   };
 
-  // Real-time ScrollSpy
+  // Real-time ScrollSpy & Mobile Auto-Hide on Scroll Down
+  let lastScrollY = window.scrollY;
   let scrollTimeout;
+
   window.addEventListener('scroll', () => {
+    const currentScrollY = window.scrollY;
+
+    // --- MOBILE ONLY: Hide on scroll down, show on scroll up ---
+    if (window.innerWidth <= 900 && mobileHeader) {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      const isDrawerOpen = drawer && drawer.classList.contains('is-open');
+
+      if (!isDrawerOpen) {
+        if (currentScrollY < 40) {
+          // Near the very top: always visible
+          mobileHeader.classList.remove('is-hidden');
+        } else if (currentScrollY > lastScrollY + 8 && currentScrollY > 70) {
+          // Scrolling down: hide mobile nav bar
+          mobileHeader.classList.add('is-hidden');
+        } else if (currentScrollY < lastScrollY - 6) {
+          // Scrolling up: reveal mobile nav bar
+          mobileHeader.classList.remove('is-hidden');
+        }
+      }
+    }
+    lastScrollY = currentScrollY;
+
+    // --- DESKTOP SCROLLSPY ---
     if (scrollTimeout) return;
     scrollTimeout = setTimeout(() => {
       scrollTimeout = null;
@@ -129,7 +156,7 @@ export function initNavbar() {
         }
       }
 
-      // If at bottom or in reservations, keep About active and optionally highlight CTA
+      // If at bottom or in reservations, keep About active and highlight CTA
       if (isAtBottom || currentSectionId === 'reservations') {
         const aboutLink = links.find(l => l.getAttribute('href') === '#about');
         if (aboutLink && aboutLink !== activeLink) {
@@ -158,21 +185,29 @@ export function initNavbar() {
 }
 
 function initMobileNav() {
-  const toggleBtn = document.getElementById('mobile-toggle-btn');
+  const toggleBtns = document.querySelectorAll('.mobile-toggle-btn, #mobile-toggle-btn');
   const drawer = document.getElementById('mobile-menu-drawer');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link, .mobile-nav-cta');
+  const mobileHeader = document.getElementById('mobile-site-header');
 
-  if (!toggleBtn || !drawer) return;
+  if (!drawer) return;
 
   function toggleDrawer(open) {
     const isOpen = open !== undefined ? open : !drawer.classList.contains('is-open');
     drawer.classList.toggle('is-open', isOpen);
-    toggleBtn.setAttribute('aria-expanded', String(isOpen));
+    toggleBtns.forEach(btn => btn.setAttribute('aria-expanded', String(isOpen)));
+
+    // When drawer is opened, ensure mobile header is visible
+    if (isOpen && mobileHeader) {
+      mobileHeader.classList.remove('is-hidden');
+    }
   }
 
-  toggleBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    toggleDrawer();
+  toggleBtns.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleDrawer();
+    });
   });
 
   mobileLinks.forEach(link => {
@@ -182,8 +217,14 @@ function initMobileNav() {
   });
 
   document.addEventListener('click', (e) => {
-    if (drawer.classList.contains('is-open') && !drawer.contains(e.target) && e.target !== toggleBtn) {
-      toggleDrawer(false);
+    if (drawer.classList.contains('is-open') && !drawer.contains(e.target)) {
+      let clickedBtn = false;
+      toggleBtns.forEach(btn => {
+        if (btn.contains(e.target)) clickedBtn = true;
+      });
+      if (!clickedBtn) {
+        toggleDrawer(false);
+      }
     }
   });
 }

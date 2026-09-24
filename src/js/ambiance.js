@@ -66,17 +66,17 @@ export function updateCafeStatus() {
     // Currently Open
     isOpen = true;
     label = 'Open Today';
-    sub = 'Closes at 11:00 PM · Dine In & Takeaway';
+    sub = 'Closes 11:00 PM · Dine In / Takeaway';
   } else if (decimalTime < openTime) {
     // Early before 1:30 PM
     isOpen = false;
     label = 'Closed Now';
-    sub = 'Opens at 1:30 PM today in Dehiwala & Colombo 03';
+    sub = 'Opens 1:30 PM · Dehiwala & Colombo 03';
   } else {
     // Late night after 11:00 PM
     isOpen = false;
     label = 'Closed Tonight';
-    sub = 'Opens at 1:30 PM tomorrow in Dehiwala & Colombo 03';
+    sub = 'Opens 1:30 PM · Dehiwala & Colombo 03';
   }
 
   // Update UI Elements
