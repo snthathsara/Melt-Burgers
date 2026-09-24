@@ -1332,10 +1332,33 @@ section[id],
     height: 135px !important;
   }
 
+  /* 5. Menu Rows & Item Sizing: scaled down for mobile */
+  .editorial-menu-section {
+    padding: 48px 0 !important;
+  }
+
+  .editorial-menu-header {
+    margin-bottom: 28px !important;
+  }
+
+  .editorial-menu-title {
+    font-size: clamp(26px, 7vw, 36px) !important;
+    margin-bottom: 8px !important;
+  }
+
+  .editorial-menu-sub {
+    font-size: 13.5px !important;
+    line-height: 1.5 !important;
+  }
+
+  .editorial-menu-rows {
+    gap: 40px !important;
+  }
+
   .editorial-row,
   .editorial-row.is-reversed {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 16px !important;
     text-align: center;
   }
 
@@ -1347,49 +1370,145 @@ section[id],
     order: 2;
   }
 
+  /* Scaled-down circular vignette on mobile */
   .vignette-frame {
-    width: 200px;
+    width: clamp(125px, 34vw, 145px) !important;
+    padding: 6px !important;
+  }
+
+  .vignette-caption {
+    font-size: 10px !important;
+    padding: 3px 10px !important;
+    bottom: -12px !important;
+  }
+
+  .menu-category-badge {
+    font-size: 18px !important;
+    margin-bottom: 12px !important;
+    padding-bottom: 2px !important;
+  }
+
+  .menu-price-items-list {
+    gap: 8px !important;
+  }
+
+  .price-item-row {
+    padding: 8px 10px !important;
+    margin: 0 -8px !important;
+    border-radius: 10px !important;
   }
 
   .price-item-top {
     justify-content: space-between;
+    gap: 10px !important;
+  }
+
+  .price-item-name {
+    font-size: 14px !important;
+    font-weight: 700 !important;
+    text-align: left;
+  }
+
+  .price-item-val {
+    font-size: 13.5px !important;
+    font-weight: 700 !important;
+  }
+
+  .price-item-desc {
+    font-size: 12px !important;
+    line-height: 1.45 !important;
+    text-align: left;
+  }
+
+  /* Specialties section: smaller badge sizes on mobile */
+  .specialties-blue-section {
+    padding: 50px 0 !important;
+  }
+
+  .specialties-header-title {
+    font-size: clamp(26px, 7vw, 34px) !important;
+  }
+
+  .specialties-header-sub {
+    font-size: 13.5px !important;
+    margin-bottom: 28px !important;
+  }
+
+  .specialties-badges-wrap {
+    gap: 18px !important;
   }
 
   .specialties-row-3 {
-    grid-template-columns: 1fr;
-    gap: 28px;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 12px !important;
+    flex-wrap: wrap !important;
   }
 
   .specialties-row-2 {
-    flex-direction: column;
-    align-items: center;
-    gap: 28px;
+    display: flex !important;
+    justify-content: center !important;
+    gap: 14px !important;
+  }
+
+  .specialty-badge-card {
+    width: 95px !important;
+  }
+
+  .specialty-badge-circle {
+    width: 82px !important;
+    height: 82px !important;
+    border-width: 2.5px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .specialty-badge-name {
+    font-size: 11.5px !important;
+    line-height: 1.2 !important;
+    text-align: center;
+  }
+
+  .specialty-badge-price {
+    font-size: 11px !important;
   }
 
   .packaging-cards-grid {
     grid-template-columns: 1fr;
   }
 
+  /* 6. Collage 2 images: significantly smaller on mobile */
   .cobalt-banner-grid {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 28px;
   }
 
   .cobalt-collage-wrap {
-    min-height: 280px;
-    width: 100%;
-    max-width: 320px;
-    margin: 0 auto;
+    min-height: 200px !important;
+    width: 100% !important;
+    max-width: 250px !important;
+    margin: 12px auto 0 auto !important;
   }
 
   .collage-card-main {
-    width: 220px;
-    height: 270px;
+    width: 155px !important;
+    height: 195px !important;
+    border-radius: 14px !important;
+    border-width: 3px !important;
   }
 
   .collage-card-secondary {
-    width: 150px;
-    height: 170px;
+    width: 110px !important;
+    height: 125px !important;
+    border-radius: 12px !important;
+    border-width: 3px !important;
+    bottom: -10px !important;
+    right: 5px !important;
+  }
+
+  .collage-cutout-floating {
+    width: 52px !important;
+    top: -16px !important;
+    left: 8px !important;
   }
 
   .order-pedestal-cake {
@@ -1400,6 +1519,55 @@ section[id],
 }
 
 @media (max-width: 500px) {
+  /* Extra-small mobile collage scaling */
+  .cobalt-collage-wrap {
+    min-height: 180px !important;
+    max-width: 230px !important;
+  }
+
+  .collage-card-main {
+    width: 140px !important;
+    height: 175px !important;
+  }
+
+  .collage-card-secondary {
+    width: 98px !important;
+    height: 112px !important;
+    bottom: -8px !important;
+    right: 0 !important;
+  }
+
+  .collage-cutout-floating {
+    width: 46px !important;
+    top: -14px !important;
+    left: 4px !important;
+  }
+
+  /* Extra-small mobile menu sizing */
+  .vignette-frame {
+    width: 130px !important;
+  }
+
+  .price-item-name {
+    font-size: 13.5px !important;
+  }
+
+  .price-item-val {
+    font-size: 13px !important;
+  }
+
+  .price-item-desc {
+    font-size: 11.5px !important;
+  }
+
+  .specialty-badge-card {
+    width: 86px !important;
+  }
+
+  .specialty-badge-circle {
+    width: 76px !important;
+    height: 76px !important;
+  }
   /* 5. Open status pill: stays on ONE clean line without breaking */
   .hero-status-pill-wrap {
     margin-bottom: 22px !important;
